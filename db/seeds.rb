@@ -1,0 +1,8 @@
+Entry.create(name: 'Bri')
+Entry.create(name: 'Ryan')
+Entry.create(name: 'Sarah')
+Entry.create(name: 'Jessie')
+Entry.create(name: 'Sean')
+Entry.create(name: 'Bob')
+Entry.create(name: 'Brad')
+Entry.create(name: 'Julie')
