@@ -5,11 +5,9 @@ class Raffler.Routers.Entries extends Backbone.Router
 
 	initialize: ->
 		@collection = new Raffler.Collections.Entries()
-		@collection.fetch()
-		console.log("VERY FIRST  " + @collection.length)
+		@collection.fetch({reset: true})
 
 	index: ->
-		console.log("FIRST  " + @collection.length)
 		view = new Raffler.Views.EntriesIndex(collection: @collection)
 		$('#container').html(view.render().el)
 

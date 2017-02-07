@@ -1,3 +1,7 @@
 <h1>Raffler</h1>
 
-<%= @entries.length %>
+<form id='new_entry'>
+	<input type="text" name='name' id='new_entry_name'>
+	<input type="submit" value='add'>
+</form>
+<ul id='entry_list'></ul>
