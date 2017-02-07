@@ -28,4 +28,18 @@
 		border: none;
 		margin-left: 10px;
 	}
+	button {
+		height: 30px;
+		background-color: pink;
+		margin: 10px;
+	}
+	.winner {
+		color: lightgrey;
+		display:block;
+		float:right;
+		margin-right:20px;
+	}
+	.highlight {
+		color: red;
+	}
 }

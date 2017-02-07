@@ -4,6 +4,7 @@ class Raffler.Views.EntriesIndex extends Backbone.View
 
   events: ->
   	"submit #new_entry": "createEntry"
+  	"click #draw": "drawWinner"
 
   initialize: ->
   	@collection.on("reset", @render, this)
@@ -15,10 +16,24 @@ class Raffler.Views.EntriesIndex extends Backbone.View
   	this
 
  	createEntry: (event) ->
- 		event.preventDefault();
- 		@collection.create name: $('#new_entry_name').val()
- 		$('#new_entry')[0].reset()
+ 		event.preventDefault()
+ 		attribute = name: $('#new_entry_name').val()
+ 		@collection.create attribute,
+ 			wait: true
+			success: -> $('#new_entry')[0].reset()
+		 	error: @handleError 
+
 
  	appendEntry: (entry) ->
  		view = new Raffler.Views.Entry(model: entry)
  		$('#entry_list').append(view.render().el)
+
+ 	handleError: (entry, response) ->
+ 		if response.status == 422
+ 			errors = $.parseJSON(response.responseText).errors
+ 			for attribute, messages of errors
+ 				alert "#{attribute} #{message}" for message in messages
+
+ 	drawWinner: (event) ->
+ 		event.preventDefault()
+ 		@collection.drawWinner()
