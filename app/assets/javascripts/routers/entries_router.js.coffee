@@ -13,3 +13,5 @@ class Raffler.Routers.Entries extends Backbone.Router
 
 	show: (id) ->
 		alert "ENTRY #{id}"
+
+	
